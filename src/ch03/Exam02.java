@@ -15,6 +15,7 @@ public class Exam02 {
 		boolean var9 = !(var1 == var2); // t
 		boolean var10 = ((var1 == var2) || (var1 < var2)); // t
 		boolean var11 = ((var1 == var2) && (var1 < var2)); // f
+		System.out.println(var11);
 		
 	}
 
