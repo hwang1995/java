@@ -1,1 +1,8 @@
+.metadata
 /bin/
+tmp/
+local.properties
+.settings/
+.loadpath
+.recommenders
+.classpath
