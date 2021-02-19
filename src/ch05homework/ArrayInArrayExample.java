@@ -22,7 +22,7 @@ public class ArrayInArrayExample {
 		
 		int[][] javaScores = {
 				{95, 80},
-				{92,96, 80}
+				{92, 96, 80}
 		};
 		for(int i =0; i < javaScores.length; i++) {
 			for(int k=0; k < javaScores[i].length; k++) {
