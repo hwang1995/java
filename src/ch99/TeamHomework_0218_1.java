@@ -51,7 +51,6 @@ public class TeamHomework_0218_1 {
 					int index = 0;
 					for(int j = 0; j < boardArray.length; j++) {
 						if(boardArray[j][0] == null) {
-							System.out.println("i inner i ==========> " + i);
 							continue;
 						}
 						int num = Integer.parseInt(boardArray[j][0]);
@@ -63,25 +62,12 @@ public class TeamHomework_0218_1 {
 							System.out.println("index : " + index);
 						}
 					}
-					System.out.println("i ===========> " + i);
 					if(index != -1) {
 						System.out.println(Arrays.toString(boardArray[index]));
 						check[index] = 1;
 					}
 				}
 			
-
-
-				
-			
-//				
-//				for(int i =boardArray.length - 1; i >= 0; i--) {
-//					if(boardArray[i][0] != null) {
-//						
-//						break;
-//					}
-//				}
-//				
 
 			
 				System.out.println();
