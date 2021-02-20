@@ -330,7 +330,7 @@ public class TeamHomework_0218_1 {
 				
 				
 			} else if(selectNo.equals("6")) {
-				int topCount = 0;
+				int topCount = 1;
 				int[] check = new int[100];
 				System.out.println("------------------------------------------------------------------------------------------------");
 				System.out.print("번호" + "\t");
@@ -357,7 +357,6 @@ public class TeamHomework_0218_1 {
 								if(max<=num && check[j]==0) {
 									max=num;
 									index=j;
-									topCount++;
 								}
 							}
 							
@@ -371,6 +370,7 @@ public class TeamHomework_0218_1 {
 									System.out.print(boardArray[index][3] + "\t\t");
 									System.out.print(boardArray[index][4] + "\t\n");
 									check[index]=1;
+									topCount++;
 								}
 								
 							}
