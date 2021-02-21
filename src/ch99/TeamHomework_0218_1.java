@@ -10,7 +10,6 @@ public class TeamHomework_0218_1 {
 		Scanner scanner = new Scanner(System.in);
 		int count=0; // 게시물 번호
 		
-		
 		while(true) {
 			System.out.println("------------------------------------------------------------------------------------------------");
 			System.out.println("1. 목록 | 2. 생성(Create) | 3. 읽기(Read) | 4. 수정(Update) | 5. 삭제(Delete) | 6. 인기글 TOP5 |  7. 종료");
@@ -335,6 +334,7 @@ public class TeamHomework_0218_1 {
 				int topCount = 1; // 5개만 출력하기 위한 변수
 				int[] check = new int[100];
 				System.out.println("------------------------------------------------------------------------------------------------");
+				System.out.print("순위" + "\t");
 				System.out.print("번호" + "\t");
 				System.out.print("제목" + "\t\t\t\t" );
 				System.out.print("내용" + "\t\t\t\t");
@@ -366,7 +366,7 @@ public class TeamHomework_0218_1 {
 								if(boardArray[index][4].equals("0")) { // 게시물의 조회수가 0이라면 보여주지 않는다
 									break;
 								} else {
-									System.out.print(boardArray[index][0] + "\t");
+									System.out.print(topCount + "위\t");
 									System.out.print(boardArray[index][1] + "\t\t\t\t" );
 									System.out.print(boardArray[index][2] + "\t\t\t\t");
 									System.out.print(boardArray[index][3] + "\t\t");
