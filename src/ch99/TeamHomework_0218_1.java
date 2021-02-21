@@ -9,6 +9,17 @@ public class TeamHomework_0218_1 {
 		
 		Scanner scanner = new Scanner(System.in);
 		int count=0;
+		
+		// 목 코드 => 테스트 용 (게시물 넣기 귀찮아서 임시로 넣음)
+		for(int i =0; i < 10; i++) {
+			count++;
+			boardArray[i][0] = String.valueOf(count);
+			boardArray[i][1] = "제목 " + String.valueOf(i+1);
+			boardArray[i][2] = "내용 " + String.valueOf(i+1);
+			boardArray[i][3] = "글쓴이 " + String.valueOf(i+1);
+			boardArray[i][4] = String.valueOf(i+1);
+		}
+		
 		while(true) {
 			System.out.println("------------------------------------------------------------------------------------------------");
 			System.out.println("1. 목록 | 2. 생성(Create) | 3. 읽기(Read) | 4. 수정(Update) | 5. 삭제(Delete) | 6. 인기글 TOP5 |  7. 종료");
