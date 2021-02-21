@@ -363,7 +363,7 @@ public class TeamHomework_0218_1 {
 							}
 							
 							if(index!=-1) { // 출력할 게시물이 있는가?
-								if(boardArray[index][4].equals("0")) {
+								if(boardArray[index][4].equals("0")) { // 게시물의 조회수가 0이라면 보여주지 않는다
 									break;
 								} else {
 									System.out.print(boardArray[index][0] + "\t");
