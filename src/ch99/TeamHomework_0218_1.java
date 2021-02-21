@@ -8,17 +8,18 @@ public class TeamHomework_0218_1 {
 		String[][] boardArray = new String[100][5];
 		
 		Scanner scanner = new Scanner(System.in);
-		int count=0;
+		int count=0; // 조회수
+		int index = 0; // 게시물 번호
 		
 		// 목 코드 => 테스트 용 (게시물 넣기 귀찮아서 임시로 넣음)
-		for(int i =0; i < 10; i++) {
-			count++;
-			boardArray[i][0] = String.valueOf(count);
-			boardArray[i][1] = "제목 " + String.valueOf(i+1);
-			boardArray[i][2] = "내용 " + String.valueOf(i+1);
-			boardArray[i][3] = "글쓴이 " + String.valueOf(i+1);
-			boardArray[i][4] = String.valueOf(i+1);
-		}
+//		for(int i =0; i < 10; i++) {
+//			count++;
+//			boardArray[i][0] = String.valueOf(count);
+//			boardArray[i][1] = "제목 " + String.valueOf(i+1);
+//			boardArray[i][2] = "내용 " + String.valueOf(i+1);
+//			boardArray[i][3] = "글쓴이 " + String.valueOf(i+1);
+//			boardArray[i][4] = String.valueOf(i+1);
+//		}
 		
 		while(true) {
 			System.out.println("------------------------------------------------------------------------------------------------");
@@ -50,36 +51,35 @@ public class TeamHomework_0218_1 {
 				System.out.print("글쓴이" + "\t\t");
 				System.out.print("조회수" + "\t\n");
 				System.out.println("------------------------------------------------------------------------------------------------");
-				
-				int[] check = new int[100];
-				for(int i=0;i<boardArray.length;i++) {
-					if(boardArray[i][0]==null) {
-						continue;
-					}
-					int max = 0;
-					int index = -1;
-					for(int j=0;j<boardArray.length;j++) {
-						if(boardArray[j][0]==null) {
+				for(int j=index; j>=0; j--) {
+					
+					for(int i=0; i<boardArray.length; i++) {
+						if(boardArray[i][0]==null) {
 							continue;
-						}
-						int num = Integer.parseInt(boardArray[j][0]);
-						if(max<=num && check[j]==0) {
-							max=num;
-							index=j;
+						}else if(boardArray[i][0].equals(String.valueOf(j))) {
+								System.out.print(boardArray[i][0] +"\t");
+				                System.out.print(boardArray[i][1] +"\t");
+				                System.out.print(boardArray[i][2] +"\t");
+				                System.out.print(boardArray[i][3] +"\t");
+				                System.out.println(boardArray[i][4] +"\t");
 						}
 					}
-					
-					if(index!=-1) {
-						System.out.print(boardArray[index][0] + "\t");
-						System.out.print(boardArray[index][1] + "\t\t\t\t" );
-						System.out.print(boardArray[index][2] + "\t\t\t\t");
-						System.out.print(boardArray[index][3] + "\t\t");
-						System.out.print(boardArray[index][4] + "\t\n");
-						check[index]=1;
-					}
-					
-				}			
-				
+				}
+//				for(int j = index ; j >= 0 ; j--) {
+//					for (int i = 0; i < boardArray.length; i++) {
+//						if(boardArray[i][0] == null) {
+//							continue;
+//						} else if (boardArray[i][0].equals(String.valueOf(j))) {
+//							System.out.print(boardArray[index][0] + "\t");
+//							System.out.print(boardArray[index][1] + "\t\t\t\t" );
+//							System.out.print(boardArray[index][2] + "\t\t\t\t");
+//							System.out.print(boardArray[index][3] + "\t\t");
+//							System.out.print(boardArray[index][4] + "\t\n");
+//						}
+//					}
+//					
+//				}
+
 				
 			} else if(selectNo.equals("2")) {
 				System.out.print("제목: ");
@@ -88,19 +88,14 @@ public class TeamHomework_0218_1 {
 				String content = scanner.nextLine();
 				System.out.print("글쓴이: ");
 				String writer = scanner.nextLine();
-				
+				index++;
 				for(int i=0;i<boardArray.length;i++) {
 					if(boardArray[i][0]==null) {
-						count++;
-						String[] arr = {
-								Integer.toString(count),
-								title,
-								content,
-								writer,
-								"0"
-						};
-						
-						boardArray[i] = arr;
+						boardArray[i][0] = String.valueOf(index);
+		                  boardArray[i][1] = title;
+		                  boardArray[i][2] = content;
+		                  boardArray[i][3] = writer;
+		                  boardArray[i][4] = "0";
 						break;
 					}
 				}
@@ -125,65 +120,68 @@ public class TeamHomework_0218_1 {
 				System.out.print("조회수" + "\t\n");
 				System.out.println("------------------------------------------------------------------------------------------------");
 				
-				int[] check = new int[100];
-				for(int i=0;i<boardArray.length;i++) {
-					if(boardArray[i][0]==null) {
-						continue;
-					}
-					int max = 0;
-					int index = -1;
-					for(int j=0;j<boardArray.length;j++) {
-						if(boardArray[j][0]==null) {
+				for(int j=index; j>=0; j--) {
+					
+					for(int i=0; i<boardArray.length; i++) {
+						if(boardArray[i][0]==null) {
 							continue;
-						}
-						int num = Integer.parseInt(boardArray[j][0]);
-						if(max<=num && check[j]==0) {
-							max=num;
-							index=j;
+						}else if(boardArray[i][0].equals(String.valueOf(j))) {
+								System.out.print(boardArray[i][0] +"\t");
+				                System.out.print(boardArray[i][1] +"\t");
+				                System.out.print(boardArray[i][2] +"\t");
+				                System.out.print(boardArray[i][3] +"\t");
+				                System.out.println(boardArray[i][4] +"\t");
 						}
 					}
-					
-					if(index!=-1) {
-						System.out.print(boardArray[index][0] + "\t");
-						System.out.print(boardArray[index][1] + "\t\t\t\t" );
-						System.out.print(boardArray[index][2] + "\t\t\t\t");
-						System.out.print(boardArray[index][3] + "\t\t");
-						System.out.print(boardArray[index][4] + "\t\n");
-						check[index]=1;
-					}
-					
-				}			
-				
-
-				
+				}
 			} else if(selectNo.equals("3")) {
 				System.out.print("번호: ");
 				String number = scanner.nextLine();
-				int i2 = -1;
-				int hits;
-				for(int i=0;i<boardArray.length;i++) {
+				for(int i=0; i<boardArray.length; i++) {
 					if(boardArray[i][0]==null) {
 						continue;
-					}
-					else if(boardArray[i][0].equals(number)) {
-						i2=i;
-					}
+					}else if( boardArray[i][0].equals(String.valueOf(number))) {
+							count = Integer.parseInt(boardArray[i][4]);
+							count++;
+							boardArray[i][4] = String.valueOf(count);
+							
+							System.out.print("제목: ");
+							System.out.println(boardArray[i][1]);
+							System.out.print("내용: ");
+							System.out.println(boardArray[i][2]);
+							System.out.print("글쓴이: ");
+							System.out.println(boardArray[i][3]);
+							System.out.print("조회수: ");
+							System.out.println(boardArray[i][4]);
+							break;
+						}
+					
 				}
-				
-				if(i2==-1) {
-					System.out.println("게시물이 존재하지 않습니다.");
-				} else {
-					System.out.println("제목: " + boardArray[i2][1]);
-					System.out.println("내용: " + boardArray[i2][2]);
-					System.out.println("글쓴이: " + boardArray[i2][3]);
-					hits = Integer.parseInt(boardArray[i2][4]);
-					hits++;
-					boardArray[i2][4]=Integer.toString(hits);
-					System.out.println("조회수: " + boardArray[i2][4]);
-				}
-				
-				
-				
+//				int i2 = -1;
+//				int hits;
+//				for(int i=0;i<boardArray.length;i++) {
+//					if(boardArray[i][0]==null) {
+//						continue;
+//					}
+//					else if(boardArray[i][0].equals(number)) {
+//						i2=i;
+//					}
+//				}
+//				
+//				if(i2==-1) {
+//					System.out.println("게시물이 존재하지 않습니다.");
+//				} else {
+//					System.out.println("제목: " + boardArray[i2][1]);
+//					System.out.println("내용: " + boardArray[i2][2]);
+//					System.out.println("글쓴이: " + boardArray[i2][3]);
+//					hits = Integer.parseInt(boardArray[i2][4]);
+//					hits++;
+//					boardArray[i2][4]=Integer.toString(hits);
+//					System.out.println("조회수: " + boardArray[i2][4]);
+//				}
+//				
+//				
+//				
 			} else if(selectNo.equals("4")) {
 				System.out.print("번호: ");
 				String number = scanner.nextLine();
@@ -232,35 +230,20 @@ public class TeamHomework_0218_1 {
 					System.out.print("글쓴이" + "\t\t");
 					System.out.print("조회수" + "\t\n");
 					System.out.println("------------------------------------------------------------------------------------------------");
-					
-					int[] check = new int[100];
-					for(int i=0;i<boardArray.length;i++) {
-						if(boardArray[i][0]==null) {
-							continue;
-						}
-						int max = 0;
-						int index = -1;
-						for(int j=0;j<boardArray.length;j++) {
-							if(boardArray[j][0]==null) {
+					for(int j = index ; j >= 0 ; j--) {
+						for (int i = 0; i < boardArray.length; i++) {
+							if(boardArray[i][0] == null) {
 								continue;
-							}
-							int num = Integer.parseInt(boardArray[j][0]);
-							if(max<=num && check[j]==0) {
-								max=num;
-								index=j;
+							} else if (boardArray[i][0].equals(String.valueOf(j))) {
+								System.out.print(boardArray[index][0] + "\t");
+								System.out.print(boardArray[index][1] + "\t\t\t\t" );
+								System.out.print(boardArray[index][2] + "\t\t\t\t");
+								System.out.print(boardArray[index][3] + "\t\t");
+								System.out.print(boardArray[index][4] + "\t\n");
 							}
 						}
 						
-						if(index!=-1) {
-							System.out.print(boardArray[index][0] + "\t");
-							System.out.print(boardArray[index][1] + "\t\t\t\t" );
-							System.out.print(boardArray[index][2] + "\t\t\t\t");
-							System.out.print(boardArray[index][3] + "\t\t");
-							System.out.print(boardArray[index][4] + "\t\n");
-							check[index]=1;
-						}
-						
-					}			
+					}	
 						
 					
 				}
@@ -308,32 +291,17 @@ public class TeamHomework_0218_1 {
 					System.out.print("글쓴이" + "\t\t");
 					System.out.print("조회수" + "\t\n");
 					System.out.println("------------------------------------------------------------------------------------------------");
-					
-					int[] check = new int[100];
-					for(int i=0;i<boardArray.length;i++) {
-						if(boardArray[i][0]==null) {
-							continue;
-						}
-						int max = 0;
-						int index = -1;
-						for(int j=0;j<boardArray.length;j++) {
-							if(boardArray[j][0]==null) {
+					for(int j = index ; j >= 0 ; j--) {
+						for (int i = 0; i < boardArray.length; i++) {
+							if(boardArray[i][0] == null) {
 								continue;
+							} else if (boardArray[i][0].equals(String.valueOf(j))) {
+								System.out.print(boardArray[index][0] + "\t");
+								System.out.print(boardArray[index][1] + "\t\t\t\t" );
+								System.out.print(boardArray[index][2] + "\t\t\t\t");
+								System.out.print(boardArray[index][3] + "\t\t");
+								System.out.print(boardArray[index][4] + "\t\n");
 							}
-							int num = Integer.parseInt(boardArray[j][0]);
-							if(max<=num && check[j]==0) {
-								max=num;
-								index=j;
-							}
-						}
-						
-						if(index!=-1) {
-							System.out.print(boardArray[index][0] + "\t");
-							System.out.print(boardArray[index][1] + "\t\t\t\t" );
-							System.out.print(boardArray[index][2] + "\t\t\t\t");
-							System.out.print(boardArray[index][3] + "\t\t");
-							System.out.print(boardArray[index][4] + "\t\n");
-							check[index]=1;
 						}
 						
 					}			
@@ -359,7 +327,7 @@ public class TeamHomework_0218_1 {
 							break;
 						} else {
 							int max = 0;
-							int index = -1;
+							int bestIndex = -1;
 							for(int j=0;j<boardArray.length;j++) {
 								if(boardArray[j][4]==null) {
 									continue;
@@ -367,11 +335,11 @@ public class TeamHomework_0218_1 {
 								int num = Integer.parseInt(boardArray[j][4]);
 								if(max<=num && check[j]==0) {
 									max=num;
-									index=j;
+									bestIndex=j;
 								}
 							}
 							
-							if(index!=-1) {
+							if(bestIndex!=-1) {
 								if(boardArray[index][4].equals("0")) {
 									break;
 								} else {
