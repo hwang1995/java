@@ -8,18 +8,8 @@ public class TeamHomework_0218_1 {
 		String[][] boardArray = new String[100][5];
 		
 		Scanner scanner = new Scanner(System.in);
-		int count=0; // 조회수
-		int index = 0; // 게시물 번호
+		int count=0; // 게시물 번호
 		
-		// 목 코드 => 테스트 용 (게시물 넣기 귀찮아서 임시로 넣음)
-//		for(int i =0; i < 10; i++) {
-//			count++;
-//			boardArray[i][0] = String.valueOf(count);
-//			boardArray[i][1] = "제목 " + String.valueOf(i+1);
-//			boardArray[i][2] = "내용 " + String.valueOf(i+1);
-//			boardArray[i][3] = "글쓴이 " + String.valueOf(i+1);
-//			boardArray[i][4] = String.valueOf(i+1);
-//		}
 		
 		while(true) {
 			System.out.println("------------------------------------------------------------------------------------------------");
@@ -51,35 +41,36 @@ public class TeamHomework_0218_1 {
 				System.out.print("글쓴이" + "\t\t");
 				System.out.print("조회수" + "\t\n");
 				System.out.println("------------------------------------------------------------------------------------------------");
-				for(int j=index; j>=0; j--) {
-					
-					for(int i=0; i<boardArray.length; i++) {
-						if(boardArray[i][0]==null) {
+				
+				int[] check = new int[100]; // 출력한 게시물인지 아닌지 check하는 배열 
+				for(int i=0;i<boardArray.length;i++) { // 게시물을 출력할 for 문
+					if(boardArray[i][0]==null) { // 게시물이 null인 경우
+						continue;
+					}
+					int max = 0; //가장 큰 게시판 번호 초기값 0
+					int index = -1;   //게시판 번호가 가장 클 때의 배열 인덱스
+					for(int j=0;j<boardArray.length;j++) {//가장 큰 게시판 번호를 찾기 위한 for문
+						if(boardArray[j][0]==null) { // 게시물이 null인 경우
 							continue;
-						}else if(boardArray[i][0].equals(String.valueOf(j))) {
-								System.out.print(boardArray[i][0] +"\t");
-				                System.out.print(boardArray[i][1] +"\t");
-				                System.out.print(boardArray[i][2] +"\t");
-				                System.out.print(boardArray[i][3] +"\t");
-				                System.out.println(boardArray[i][4] +"\t");
+						}
+						int num = Integer.parseInt(boardArray[j][0]); // 현재 게시판 번호
+						if(max<=num && check[j]==0) { //게시판 번호가 가장 큰 값이면서 출력하지 않은 게시물이면
+							max=num; //게시판 번호를 max에 저장
+							index=j; //게시판 번호가 가장 큰 배열 인덱스 
 						}
 					}
-				}
-//				for(int j = index ; j >= 0 ; j--) {
-//					for (int i = 0; i < boardArray.length; i++) {
-//						if(boardArray[i][0] == null) {
-//							continue;
-//						} else if (boardArray[i][0].equals(String.valueOf(j))) {
-//							System.out.print(boardArray[index][0] + "\t");
-//							System.out.print(boardArray[index][1] + "\t\t\t\t" );
-//							System.out.print(boardArray[index][2] + "\t\t\t\t");
-//							System.out.print(boardArray[index][3] + "\t\t");
-//							System.out.print(boardArray[index][4] + "\t\n");
-//						}
-//					}
-//					
-//				}
-
+					
+					if(index!=-1) { //출력할 게시물이 있는가? 
+						System.out.print(boardArray[index][0] + "\t");
+						System.out.print(boardArray[index][1] + "\t\t\t\t" );
+						System.out.print(boardArray[index][2] + "\t\t\t\t");
+						System.out.print(boardArray[index][3] + "\t\t");
+						System.out.print(boardArray[index][4] + "\t\n");
+						check[index]=1; //출력한 게시물 체크
+					}
+					
+				}			
+				
 				
 			} else if(selectNo.equals("2")) {
 				System.out.print("제목: ");
@@ -88,14 +79,19 @@ public class TeamHomework_0218_1 {
 				String content = scanner.nextLine();
 				System.out.print("글쓴이: ");
 				String writer = scanner.nextLine();
-				index++;
+				
 				for(int i=0;i<boardArray.length;i++) {
 					if(boardArray[i][0]==null) {
-						boardArray[i][0] = String.valueOf(index);
-		                  boardArray[i][1] = title;
-		                  boardArray[i][2] = content;
-		                  boardArray[i][3] = writer;
-		                  boardArray[i][4] = "0";
+						count++; // 저장할 때 카운트 저장 (게시물 번호)
+						String[] arr = {
+								String.valueOf(count),
+								title,
+								content,
+								writer,
+								"0"
+						};
+						
+						boardArray[i] = arr;
 						break;
 					}
 				}
@@ -120,72 +116,69 @@ public class TeamHomework_0218_1 {
 				System.out.print("조회수" + "\t\n");
 				System.out.println("------------------------------------------------------------------------------------------------");
 				
-				for(int j=index; j>=0; j--) {
-					
-					for(int i=0; i<boardArray.length; i++) {
-						if(boardArray[i][0]==null) {
+				int[] check = new int[100];
+				for(int i=0;i<boardArray.length;i++) {
+					if(boardArray[i][0]==null) {
+						continue;
+					}
+					int max = 0;
+					int index = -1;
+					for(int j=0;j<boardArray.length;j++) {
+						if(boardArray[j][0]==null) {
 							continue;
-						}else if(boardArray[i][0].equals(String.valueOf(j))) {
-								System.out.print(boardArray[i][0] +"\t");
-				                System.out.print(boardArray[i][1] +"\t");
-				                System.out.print(boardArray[i][2] +"\t");
-				                System.out.print(boardArray[i][3] +"\t");
-				                System.out.println(boardArray[i][4] +"\t");
+						}
+						int num = Integer.parseInt(boardArray[j][0]);
+						if(max<=num && check[j]==0) {
+							max=num;
+							index=j;
 						}
 					}
-				}
+					
+					if(index!=-1) {
+						System.out.print(boardArray[index][0] + "\t");
+						System.out.print(boardArray[index][1] + "\t\t\t\t" );
+						System.out.print(boardArray[index][2] + "\t\t\t\t");
+						System.out.print(boardArray[index][3] + "\t\t");
+						System.out.print(boardArray[index][4] + "\t\n");
+						check[index]=1;
+					}
+					
+				}			
+				
+
+				
 			} else if(selectNo.equals("3")) {
 				System.out.print("번호: ");
 				String number = scanner.nextLine();
-				for(int i=0; i<boardArray.length; i++) {
+				int i2 = -1; // 게시물이 있는지 없는지 체크
+				int hits;
+				for(int i=0;i<boardArray.length;i++) {
 					if(boardArray[i][0]==null) {
 						continue;
-					}else if( boardArray[i][0].equals(String.valueOf(number))) {
-							count = Integer.parseInt(boardArray[i][4]);
-							count++;
-							boardArray[i][4] = String.valueOf(count);
-							
-							System.out.print("제목: ");
-							System.out.println(boardArray[i][1]);
-							System.out.print("내용: ");
-							System.out.println(boardArray[i][2]);
-							System.out.print("글쓴이: ");
-							System.out.println(boardArray[i][3]);
-							System.out.print("조회수: ");
-							System.out.println(boardArray[i][4]);
-							break;
-						}
-					
+					}
+					else if(boardArray[i][0].equals(number)) {
+						i2=i;
+					}
 				}
-//				int i2 = -1;
-//				int hits;
-//				for(int i=0;i<boardArray.length;i++) {
-//					if(boardArray[i][0]==null) {
-//						continue;
-//					}
-//					else if(boardArray[i][0].equals(number)) {
-//						i2=i;
-//					}
-//				}
-//				
-//				if(i2==-1) {
-//					System.out.println("게시물이 존재하지 않습니다.");
-//				} else {
-//					System.out.println("제목: " + boardArray[i2][1]);
-//					System.out.println("내용: " + boardArray[i2][2]);
-//					System.out.println("글쓴이: " + boardArray[i2][3]);
-//					hits = Integer.parseInt(boardArray[i2][4]);
-//					hits++;
-//					boardArray[i2][4]=Integer.toString(hits);
-//					System.out.println("조회수: " + boardArray[i2][4]);
-//				}
-//				
-//				
-//				
+				
+				if(i2==-1) {
+					System.out.println("게시물이 존재하지 않습니다.");
+				} else {
+					System.out.println("제목: " + boardArray[i2][1]);
+					System.out.println("내용: " + boardArray[i2][2]);
+					System.out.println("글쓴이: " + boardArray[i2][3]);
+					hits = Integer.parseInt(boardArray[i2][4]);
+					hits++;
+					boardArray[i2][4]=String.valueOf(hits);
+					System.out.println("조회수: " + boardArray[i2][4]);
+				}
+				
+				
+				
 			} else if(selectNo.equals("4")) {
 				System.out.print("번호: ");
 				String number = scanner.nextLine();
-				int i2 = -1;
+				int i2 = -1; // 게시물이 있는지 없는지 체크
 				for(int i=0;i<boardArray.length;i++) {
 					if(boardArray[i][0]==null) {
 						continue;
@@ -230,20 +223,35 @@ public class TeamHomework_0218_1 {
 					System.out.print("글쓴이" + "\t\t");
 					System.out.print("조회수" + "\t\n");
 					System.out.println("------------------------------------------------------------------------------------------------");
-					for(int j = index ; j >= 0 ; j--) {
-						for (int i = 0; i < boardArray.length; i++) {
-							if(boardArray[i][0] == null) {
+					
+					int[] check = new int[100];
+					for(int i=0;i<boardArray.length;i++) {
+						if(boardArray[i][0]==null) {
+							continue;
+						}
+						int max = 0;
+						int index = -1;
+						for(int j=0;j<boardArray.length;j++) {
+							if(boardArray[j][0]==null) {
 								continue;
-							} else if (boardArray[i][0].equals(String.valueOf(j))) {
-								System.out.print(boardArray[index][0] + "\t");
-								System.out.print(boardArray[index][1] + "\t\t\t\t" );
-								System.out.print(boardArray[index][2] + "\t\t\t\t");
-								System.out.print(boardArray[index][3] + "\t\t");
-								System.out.print(boardArray[index][4] + "\t\n");
+							}
+							int num = Integer.parseInt(boardArray[j][0]);
+							if(max<=num && check[j]==0) {
+								max=num;
+								index=j;
 							}
 						}
 						
-					}	
+						if(index!=-1) {
+							System.out.print(boardArray[index][0] + "\t");
+							System.out.print(boardArray[index][1] + "\t\t\t\t" );
+							System.out.print(boardArray[index][2] + "\t\t\t\t");
+							System.out.print(boardArray[index][3] + "\t\t");
+							System.out.print(boardArray[index][4] + "\t\n");
+							check[index]=1;
+						}
+						
+					}			
 						
 					
 				}
@@ -291,17 +299,32 @@ public class TeamHomework_0218_1 {
 					System.out.print("글쓴이" + "\t\t");
 					System.out.print("조회수" + "\t\n");
 					System.out.println("------------------------------------------------------------------------------------------------");
-					for(int j = index ; j >= 0 ; j--) {
-						for (int i = 0; i < boardArray.length; i++) {
-							if(boardArray[i][0] == null) {
+					
+					int[] check = new int[100];
+					for(int i=0;i<boardArray.length;i++) {
+						if(boardArray[i][0]==null) {
+							continue;
+						}
+						int max = 0;
+						int index = -1;
+						for(int j=0;j<boardArray.length;j++) {
+							if(boardArray[j][0]==null) {
 								continue;
-							} else if (boardArray[i][0].equals(String.valueOf(j))) {
-								System.out.print(boardArray[index][0] + "\t");
-								System.out.print(boardArray[index][1] + "\t\t\t\t" );
-								System.out.print(boardArray[index][2] + "\t\t\t\t");
-								System.out.print(boardArray[index][3] + "\t\t");
-								System.out.print(boardArray[index][4] + "\t\n");
 							}
+							int num = Integer.parseInt(boardArray[j][0]);
+							if(max<=num && check[j]==0) {
+								max=num;
+								index=j;
+							}
+						}
+						
+						if(index!=-1) {
+							System.out.print(boardArray[index][0] + "\t");
+							System.out.print(boardArray[index][1] + "\t\t\t\t" );
+							System.out.print(boardArray[index][2] + "\t\t\t\t");
+							System.out.print(boardArray[index][3] + "\t\t");
+							System.out.print(boardArray[index][4] + "\t\n");
+							check[index]=1;
 						}
 						
 					}			
@@ -309,7 +332,7 @@ public class TeamHomework_0218_1 {
 				
 				
 			} else if(selectNo.equals("6")) {
-				int topCount = 1;
+				int topCount = 1; // 5개만 출력하기 위한 변수
 				int[] check = new int[100];
 				System.out.println("------------------------------------------------------------------------------------------------");
 				System.out.print("번호" + "\t");
@@ -323,23 +346,23 @@ public class TeamHomework_0218_1 {
 					if(boardArray[i][0]==null) {
 						continue;
 					} else {
-						if (topCount > 5) {
+						if (topCount > 5) { // 인기글 5개를 넘어가면? 나간다
 							break;
 						} else {
 							int max = 0;
-							int bestIndex = -1;
+							int index = -1;
 							for(int j=0;j<boardArray.length;j++) {
-								if(boardArray[j][4]==null) {
+								if(boardArray[j][4]==null) { //  조회수가 null이면 넘어가기
 									continue;
 								}
 								int num = Integer.parseInt(boardArray[j][4]);
-								if(max<=num && check[j]==0) {
+								if(max<=num && check[j]==0) { // 최대값 비교
 									max=num;
-									bestIndex=j;
+									index=j;
 								}
 							}
 							
-							if(bestIndex!=-1) {
+							if(index!=-1) { // 출력할 게시물이 있는가?
 								if(boardArray[index][4].equals("0")) {
 									break;
 								} else {
@@ -348,8 +371,8 @@ public class TeamHomework_0218_1 {
 									System.out.print(boardArray[index][2] + "\t\t\t\t");
 									System.out.print(boardArray[index][3] + "\t\t");
 									System.out.print(boardArray[index][4] + "\t\n");
-									check[index]=1;
-									topCount++;
+									check[index]=1; // 출력한 게시물 체크
+									topCount++; // 인기글 추가
 								}
 								
 							}
