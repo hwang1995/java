@@ -333,14 +333,14 @@ public class TeamHomework_0218_1 {
 			} else if(selectNo.equals("6")) {
 				int topCount = 1; // 5개만 출력하기 위한 변수
 				int[] check = new int[100];
-				System.out.println("------------------------------------------------------------------------------------------------");
+				System.out.println("------------------------------------------------------------------------------------------------------");
 				System.out.print("순위" + "\t");
 				System.out.print("번호" + "\t");
 				System.out.print("제목" + "\t\t\t\t" );
 				System.out.print("내용" + "\t\t\t\t");
 				System.out.print("글쓴이" + "\t\t");
 				System.out.print("조회수" + "\t\n");
-				System.out.println("------------------------------------------------------------------------------------------------");
+				System.out.println("------------------------------------------------------------------------------------------------------");
 				
 				for(int i=0;i<boardArray.length;i++) {
 					if(boardArray[i][0]==null) {
@@ -367,6 +367,7 @@ public class TeamHomework_0218_1 {
 									break;
 								} else {
 									System.out.print(topCount + "위\t");
+									System.out.print(boardArray[index][0] + "\t");
 									System.out.print(boardArray[index][1] + "\t\t\t\t" );
 									System.out.print(boardArray[index][2] + "\t\t\t\t");
 									System.out.print(boardArray[index][3] + "\t\t");
